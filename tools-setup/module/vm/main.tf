@@ -68,5 +68,5 @@ resource "azurerm_dns_a_record" "private" {
 
 resource "azurerm_network_interface_security_group_association" "example_nsg_association" {
   network_interface_id      = azurerm_network_interface.privateip.id
-  network_security_group_id = "/subscriptions/8378289b-756a-4d87-88be-37638bd44229/resourceGroups/rg1/providers/Microsoft.Network/networkSecurityGroups/project-allow-all-ports"
+  network_security_group_id="/subscriptions/8378289b-756a-4d87-88be-37638bd44229/resourceGroups/rg1/providers/Microsoft.Network/networkSecurityGroups/project-allow-all-ports"
 }
