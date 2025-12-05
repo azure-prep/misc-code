@@ -31,7 +31,7 @@ resource "azurerm_virtual_machine" "vm" {
   # delete_data_disks_on_termination = true
 
   storage_image_reference {
-    id                = "/subscriptions/8378289b-756a-4d87-88be-37638bd44229/resourceGroups/rg1/providers/Microsoft.Compute/images/devops-practice-image""
+    id = "/subscriptions/8378289b-756a-4d87-88be-37638bd44229/resourceGroups/rg1/providers/Microsoft.Compute/images/devops-practice-image"
   }
   storage_os_disk {
     name              = var.name
