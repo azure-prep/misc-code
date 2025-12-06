@@ -9,8 +9,8 @@ terraform {
   }
 }
 
-module "vm" {
-  source = "./module/vm"
+module "spot-vm" {
+  source = "./module/spot-vm"
   location = "UK West"
   name = "vault"
   resource_group_name = "rg1"
