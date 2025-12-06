@@ -7,4 +7,12 @@
   ansible.builtin.dnf:
     name: vault
 
+- name: start the service.
+  ansible.builtin.systemd_service:
+    state: started
+    enabled: true
+    name: "{{ component }}"
+    daemon_reload: true
+
+
 
