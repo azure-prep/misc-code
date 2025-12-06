@@ -22,7 +22,7 @@ resource "azurerm_linux_virtual_machine" "spot_vm" {
   location              = var.location
   resource_group_name   = var.resource_group_name
   network_interface_ids = [azurerm_network_interface.privateip.id]
-  size                = "Standard_B1s"
+  size                = "Standard_F1s"
   admin_username      = "azuser"
   admin_password      = "DevOps@123"
   disable_password_authentication = false
