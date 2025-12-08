@@ -11,6 +11,13 @@ variable "secret" {
 
 variable "values" {
   default = {
+    ssh = {
+      secret="roboshop-infra"
+      values={
+        ssh_user="azuser"
+        ssh_password="DevOps@123"
+      }
+    },
     cart = {
       secret="roboshop-dev"
       values={
@@ -26,5 +33,6 @@ variable "values" {
         MONGO_URL="mongodb://mongodb-dev.azdevopsb1.online:27017/catalogue"
       }
     }
+
   }
 }
