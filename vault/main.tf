@@ -15,7 +15,7 @@ resource "vault_mount" "secret" {
 
 resource "vault_generic_secret" "example" {
   for_each = var.values
-  path = each.key["secret"]/each.key
+  path = each.value["secret"]/each.key
 
   data_json = jsonencode(
     {
