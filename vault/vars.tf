@@ -26,23 +26,23 @@ variable "values" {
         CATALOGUE_PORT="8080"
       }
     },
-    # catalogue = {
-    #   secret="roboshop-dev"
-    #   values={
-    #     MONGO=true
-    #     MONGO_URL="mongodb://mongodb-dev.azdevopsb1.online:27017/catalogue"
-    #   }
-    # },
-    # frontend = {
-    #   secret="roboshop-dev"
-    #   values={
-    #     CATALOGUE="http://catalogue-dev.azdevopsb1.online:8080/"
-    #     CART="http://cart-dev.azdevopsb1.online:8080/",
-    #     USER="http://user-dev.azdevopsb1.online:8080/",
-    #     SHIPPING="http://shipping-dev.azdevopsb1.online:8080/",
-    #     PAYMENT="http://payment-dev.azdevopsb1.online:8080/"
-    #   }
-    # },
+    catalogue = {
+      secret="roboshop-dev"
+      values={
+        MONGO=true
+        MONGO_URL="mongodb://mongodb-dev.azdevopsb1.online:27017/catalogue"
+      }
+    },
+    frontend = {
+      secret="roboshop-dev"
+      values={
+        CATALOGUE="http://catalogue-dev.azdevopsb1.online:8080/"
+        CART="http://cart-dev.azdevopsb1.online:8080/",
+        USER="http://user-dev.azdevopsb1.online:8080/",
+        SHIPPING="http://shipping-dev.azdevopsb1.online:8080/",
+        PAYMENT="http://payment-dev.azdevopsb1.online:8080/"
+      }
+    },
     # payment = {
     #   secret="roboshop-dev"
     #   values={
