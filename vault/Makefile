@@ -2,8 +2,8 @@ apply:
 	git pull
 	rm -rf .terraform
 	terraform init  -backend-config=terraform-state.tfvars
-	terraform apply -auto-approve -var token=${1}
+	terraform apply -auto-approve -var token=vs.OEKXofRTU1btspGwcPZdAuHc
 destroy:
 	git pull
 	terraform init  -backend-config=terraform-state.tfvars
-	terraform destroy -auto-approve -var token=${1}
+	terraform destroy -auto-approve -var token=vs.OEKXofRTU1btspGwcPZdAuHc
