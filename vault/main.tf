@@ -11,25 +11,14 @@ resource "vault_mount" "kvv2" {
   description = "KV Version 2 secret engine mount"
 }
 
-# resource "vault_kv_secret_v2" "example" {
-#   mount                      = vault_mount.kvv2.path
-#   name                       = "secret"
-#   cas                        = 1
-#   delete_all_versions        = true
-#   data_json                  = jsonencode(
-#     {
-#       zip       = "zap",
-#       foo       = "bar"
-#     }
-#   )
-#   custom_metadata {
-#     max_versions = 5
-#     data = {
-#       foo = "vault@example.com",
-#       bar = "12345"
-#     }
-#   }
-# }
+resource "vault_kv_secret_v2" "example" {
+  for_each = var.values
+  mount                      = each.value["secret"]
+  name                       = "secret"
+  cas                        = 1
+  delete_all_versions        = true
+  data_json                  = jsonencode(each.value["values"])
+}
 
 # resource "vault_generic_secret" "example" {
 #   for_each = var.values
