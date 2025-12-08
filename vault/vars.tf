@@ -18,14 +18,14 @@ variable "values" {
         ssh_password = "DevOps@123"
       }
     },
-    # cart = {
-    #   secret="roboshop-dev"
-    #   values={
-    #     REDIS_HOST="redis-dev.azdevopsb1.online"
-    #     CATALOGUE_HOST="catalogue-dev.azdevopsb1.online"
-    #     CATALOGUE_PORT="8080"
-    #   }
-    # },
+    cart = {
+      secret="roboshop-dev"
+      values={
+        REDIS_HOST="redis-dev.azdevopsb1.online"
+        CATALOGUE_HOST="catalogue-dev.azdevopsb1.online"
+        CATALOGUE_PORT="8080"
+      }
+    },
     # catalogue = {
     #   secret="roboshop-dev"
     #   values={
