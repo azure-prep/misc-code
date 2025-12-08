@@ -14,7 +14,7 @@ resource "vault_mount" "kvv2" {
 resource "vault_kv_secret_v2" "example" {
   for_each = var.values
   mount                      = each.value["secret"]
-  name                       = "secret"
+  name                       = each.key
   cas                        = 1
   delete_all_versions        = true
   data_json                  = jsonencode(each.value["values"])
