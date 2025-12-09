@@ -34,13 +34,13 @@ variable "values" {
       }
     },
     frontend = {
-      secret="roboshop-dev"
-      values={
-        CATALOGUE="http://catalogue-dev.azdevopsb1.online:8080/"
-        CART="http://cart-dev.azdevopsb1.online:8080/",
-        USER="http://user-dev.azdevopsb1.online:8080/",
-        SHIPPING="http://shipping-dev.azdevopsb1.online:8080/",
-        PAYMENT="http://payment-dev.azdevopsb1.online:8080/"
+      secret = "roboshop-dev"
+      value = {
+        catalogue_url = "http://catalogue-dev.azdevopsb1.online:8080/"
+        user_url      = "http://user-dev.azdevopsb1.online:8080/"
+        cart_url      = "http://cart-dev.azdevopsb1.online:8080/"
+        payment_url   = "http://payment-dev.azdevopsb1.online:8080/"
+        shipping_url  = "http://shipping-dev.azdevopsb1.online:8080/",
       }
     },
     payment = {
