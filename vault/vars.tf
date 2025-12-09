@@ -35,7 +35,7 @@ variable "values" {
     },
     frontend = {
       secret = "roboshop-dev"
-      value = {
+      values = {
         catalogue_url = "http://catalogue-dev.azdevopsb1.online:8080/"
         user_url      = "http://user-dev.azdevopsb1.online:8080/"
         cart_url      = "http://cart-dev.azdevopsb1.online:8080/"
