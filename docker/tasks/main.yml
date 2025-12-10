@@ -1,0 +1,30 @@
+- name: Remove the Apache package
+  ansible.builtin.dnf:
+    name: docker
+    state: absent
+
+- name: Remove the Apache package
+  ansible.builtin.dnf:
+    name: dnf-plugins-core
+    state: present
+
+- name: Remove the Apache package
+  ansible.builtin.dnf:
+    name: dnf-plugins-core
+    state: present
+
+- name: Remove the Apache package
+  ansible.builtin.shell: dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
+
+- name: Start docker
+  ansible.builtin.systemd_service:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: Add user 'your_username' to the docker group
+  ansible.builtin.user:
+    name: "azuser"
+    groups: docker
+    append: yes # Crucial to add to existing groups without removing others
+    state: present
