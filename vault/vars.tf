@@ -63,7 +63,7 @@ variable "values" {
         CART_HOST="cart-dev.azdevopsb1.online"
         CART_PORT="8080"
         USER_HOST="user-dev.azdevopsb1.online"
-        USER_PORT=8080
+        USER_PORT="8080"
         AMQP_HOST="rabbitmq-dev.azdevopsb1.online"
         AMQP_USER="roboshop"
         AMQP_PASS="roboshop123"
