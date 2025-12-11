@@ -29,7 +29,7 @@ variable "values" {
     catalogue = {
       secret="roboshop-dev"
       values={
-        MONGO=true
+        MONGO="true"
         MONGO_URL="mongodb://mongodb-dev.azdevopsb1.online:27017/catalogue"
         DB_TYPE = "mongo"
         DB_HOST = "mongodb-dev.azdevopsb1.online"
