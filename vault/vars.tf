@@ -83,7 +83,7 @@ variable "values" {
     user = {
       secret = "roboshop-dev"
       values = {
-        MONGO     = true
+        MONGO     = "true"
         REDIS_URL = "redis://redis-dev.azdevopsb1.online:6379"
         MONGO_URL = "mongodb://mongodb-dev.azdevopsb1.online:27017/users"
       }
