@@ -31,6 +31,10 @@ variable "values" {
       values={
         MONGO=true
         MONGO_URL="mongodb://mongodb-dev.azdevopsb1.online:27017/catalogue"
+        DB_TYPE = "mongo"
+        DB_HOST = "mongodb-dev.azdevopsb1.online"
+        SCHEMA_FILE = "db/master-data.js"
+        APP_GIT_URL = "https://github.com/roboshop-devops-project-v3/catalogue"
       }
     },
     frontend = {
@@ -40,7 +44,17 @@ variable "values" {
         user_url      = "http://user-dev.azdevopsb1.online:8080/"
         cart_url      = "http://cart-dev.azdevopsb1.online:8080/"
         payment_url   = "http://payment-dev.azdevopsb1.online:8080/"
-        shipping_url  = "http://shipping-dev.azdevopsb1.online:8080/",
+        shipping_url  = "http://shipping-dev.azdevopsb1.online:8080/"
+        CATALOGUE_HOST = "catalogue-dev.azdevopsb1.online"
+        CATALOGUE_PORT = "8080"
+        USER_HOST = "user-dev.azdevopsb1.online"
+        USER_PORT = "8080"
+        CART_HOST = "cart-dev.azdevopsb1.online"
+        CART_PORT = "8080"
+        SHIPPING_HOST = "shipping-dev.azdevopsb1.online"
+        SHIPPING_PORT = "8080"
+        PAYMENT_HOST  = "payment-dev.azdevopsb1.online"
+        PAYMENT_PORT  = "8080"
       }
     },
     payment = {
@@ -60,6 +74,10 @@ variable "values" {
       values={
       CART_ENDPOINT="cart-dev.azdevopsb1.online:8080"
       DB_HOST="mysql-dev.azdevopsb1.online"
+        DB_TYPE = "mysql"
+        APP_GIT_URL = "https://github.com/roboshop-devops-project-v3/shipping"
+        DB_USER = "root"
+        DB_PASS = "RoboShop@1"
     }
     },
     user = {
