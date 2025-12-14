@@ -11,11 +11,6 @@
 - name: Install kubectl Docker
   ansible.builtin.shell: dnf install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
 
-- name: Start kubectl
-  ansible.builtin.systemd_service:
-    name: kubectl
-    state: started
-    enabled: yes
 
 - name: Install k9s
   ansible.builtin.dnf:
