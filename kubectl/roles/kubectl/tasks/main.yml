@@ -3,6 +3,11 @@
     src: kubernetes.repo
     dest: /etc/yum.repos.d/kubernetes.repo
 
+- name: Update package cache
+  ansible.builtin.package:
+    update_cache: true
+    state: present
+
 - name: Install kubectl Docker
   ansible.builtin.dnf:
     name: kubectl
