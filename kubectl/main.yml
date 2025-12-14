@@ -1,0 +1,6 @@
+- name: Install docker
+  hosts: localhost
+  connection: local
+  become: yes
+  roles:
+    - "kubectl"
