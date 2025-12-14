@@ -9,9 +9,7 @@
     state: present
 
 - name: Install kubectl Docker
-  ansible.builtin.dnf:
-    name: kubectl
-    state: installed
+  ansible.builtin.shell: dnf install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
 
 - name: Start kubectl
   ansible.builtin.systemd_service:
