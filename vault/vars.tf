@@ -22,7 +22,7 @@ variable "values" {
       secret="roboshop-dev"
       values={
         REDIS_HOST="redis-dev.azdevopsb1.online"
-        CATALOGUE_HOST="catalogue-dev.azdevopsb1.online"
+        CATALOGUE_HOST="catalogue"
         CATALOGUE_PORT="8080"
       }
     },
@@ -33,7 +33,6 @@ variable "values" {
         MONGO_URL="mongodb://mongodb-dev.azdevopsb1.online:27017/catalogue"
         DB_TYPE = "mongo"
         DB_HOST = "mongodb-dev.azdevopsb1.online"
-        SCHEMA_FILE = "db/master-data.js"
         APP_GIT_URL = "https://github.com/roboshop-devops-project-v3/catalogue"
       }
     },
@@ -45,24 +44,24 @@ variable "values" {
         cart_url      = "http://cart-dev.azdevopsb1.online:8080/"
         payment_url   = "http://payment-dev.azdevopsb1.online:8080/"
         shipping_url  = "http://shipping-dev.azdevopsb1.online:8080/"
-        CATALOGUE_HOST = "catalogue-dev.azdevopsb1.online"
+        CATALOGUE_HOST = "catalogue"
         CATALOGUE_PORT = "8080"
-        USER_HOST = "user-dev.azdevopsb1.online"
+        USER_HOST = "user"
         USER_PORT = "8080"
-        CART_HOST = "cart-dev.azdevopsb1.online"
+        CART_HOST = "cart"
         CART_PORT = "8080"
-        SHIPPING_HOST = "shipping-dev.azdevopsb1.online"
+        SHIPPING_HOST = "shipping"
         SHIPPING_PORT = "8080"
-        PAYMENT_HOST  = "payment-dev.azdevopsb1.online"
+        PAYMENT_HOST  = "payment"
         PAYMENT_PORT  = "8080"
       }
     },
     payment = {
       secret="roboshop-dev"
       values={
-        CART_HOST="cart-dev.azdevopsb1.online"
+        CART_HOST="cart"
         CART_PORT="8080"
-        USER_HOST="user-dev.azdevopsb1.online"
+        USER_HOST="user"
         USER_PORT="8080"
         AMQP_HOST="rabbitmq-dev.azdevopsb1.online"
         AMQP_USER="roboshop"
@@ -72,7 +71,7 @@ variable "values" {
     shipping = {
       secret="roboshop-dev"
       values={
-      CART_ENDPOINT="cart-dev.azdevopsb1.online:8080"
+      CART_ENDPOINT="cart:8080"
       DB_HOST="mysql-dev.azdevopsb1.online"
         DB_TYPE = "mysql"
         APP_GIT_URL = "https://github.com/roboshop-devops-project-v3/shipping"
