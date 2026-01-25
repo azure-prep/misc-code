@@ -1,4 +1,6 @@
 FROM redhat/ubi9
+RUN dnf install -y libicu \
+    && dnf clean all
 RUN adduser github
 USER github
 WORKDIR /home/github
