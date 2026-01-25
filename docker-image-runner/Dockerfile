@@ -1,7 +1,6 @@
 FROM redhat/ubi9
 
-RUN dnf install -y libicu curl tar \
-    && dnf clean all
+RUN dnf install -y libicu
 
 RUN adduser github
 
