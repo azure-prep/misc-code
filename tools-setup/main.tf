@@ -10,12 +10,12 @@ terraform {
 }
 
 
-# module "vault" {
-#   source = "./module/spot-vm"
-#   location = "UK West"
-#   name = "vault"
-#   resource_group_name = "rg1"
-# }
+module "vault" {
+  source = "./module/spot-vm"
+  location = "UK West"
+  name = "vault"
+  resource_group_name = "rg1"
+}
 
 module "runner" {
   source = "./module/vm"
