@@ -14,3 +14,8 @@
     state: started
     enabled: yes
 
+- name: Install the latest version
+  ansible.builtin.dnf:
+    name: libicu
+    state: latest
+
