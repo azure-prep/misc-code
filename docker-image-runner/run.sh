@@ -1,0 +1,1 @@
+./config.sh --url https://github.com/azure-prep --token AO4F6QDTB6GBXLIVAQTYKBTJOZDO6
