@@ -9,6 +9,7 @@ terraform {
   }
 }
 
+
 # module "vault" {
 #   source = "./module/spot-vm"
 #   location = "UK West"
