@@ -4,7 +4,7 @@ RUN dnf install -y libicu \
 RUN adduser github
 USER github
 WORKDIR /home/github
-COPY run.sh .
+COPY main.sh .
 RUN curl -o actions-runner-linux-x64-2.331.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.331.0/actions-runner-linux-x64-2.331.0.tar.gz
 RUN tar xzf ./actions-runner-linux-x64-2.331.0.tar.gz
-ENTRYPOINT  ["sleep 10000s"]
+ENTRYPOINT  ["./main.sh"]
