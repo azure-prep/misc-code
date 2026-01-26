@@ -19,9 +19,18 @@
     name: libicu
     state: latest
 
+- name: Ensure the 'docker' group exists
+  ansible.builtin.group:
+    name: docker
+    state: present
+
+- name: Add the specified user to the 'docker' group
+  ansible.builtin.user:
+    name: azuser # Use a variable for the username
+    groups: docker
+    append: true # This ensures the user is added to the group without removing them from others
+
 - name: Log into DockerHub using a Personal Access Token
-  collections:
-    - community.docker
   community.docker.docker_login:
     username: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-infra/data/github:docker_user token={{ token }} url=http://vault-int.azdevopsb1.online:8200') }}"
     password: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-infra/data/github:docker_pat token={{ token }} url=http://vault-int.azdevopsb1.online:8200') }}"
