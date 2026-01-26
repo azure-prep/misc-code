@@ -5,11 +5,11 @@
 
 - name: Deploy runner
   community.docker.docker_container:
-    name: "{ { item } }"
+    name: "{{ item }}"
     image: chandralekhas/github-runner:latest
     env:
       TOKEN: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-infra/data/github:token token={{ token }} url=http://vault-int.azdevopsb1.online:8200') }}"
-      NAME: "{ { item } }"
+      NAME: "{{ item }}"
     state: started
   loop:
     - runner1
