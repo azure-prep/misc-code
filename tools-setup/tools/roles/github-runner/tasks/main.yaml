@@ -8,7 +8,10 @@
     name: github-runner
     image: chandralekhas/github-runner:latest
     env:
-      # Define key-value pairs for environment variables
       TOKEN: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-infra/data/github:token token={{ token }} url=http://vault-int.azdevopsb1.online:8200') }}"
-      NAME: "runner-dev-1"
+      NAME: { { item } }
     state: started
+  loop:
+    - runner1
+    - runner2
+    - runner3
