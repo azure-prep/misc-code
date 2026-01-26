@@ -50,6 +50,21 @@ resource "azurerm_virtual_machine" "vm" {
 
 }
 
+resource "null_resource" "ansible" {
+  provisioner "remote-exec" {
+    inline = [
+      "sudo dnf install python3.12 python3.12-pip -y",
+      "sudo pip3.12 install ansible hvac",
+    ]
+    connection {
+      type     = "ssh"
+      user     = azuser
+      password = "Devops@12345"
+      host     =  azurerm_network_interface.privateip.private_ip_address
+    }
+  }
+}
+
 resource "azurerm_dns_a_record" "public" {
   name                = var.name
   zone_name           = "azdevopsb1.online"
