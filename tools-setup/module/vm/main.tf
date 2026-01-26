@@ -55,7 +55,7 @@ resource "azurerm_dns_a_record" "public" {
   zone_name           = "azdevopsb1.online"
   resource_group_name = var.resource_group_name
   ttl                 = 300
-  records             = [azurerm_network_interface.privateip.private_ip_address]
+  records             = [azurerm_public_ip.public-ip.ip_address]
 }
 
 resource "azurerm_dns_a_record" "private" {
@@ -63,7 +63,7 @@ resource "azurerm_dns_a_record" "private" {
   zone_name           = "azdevopsb1.online"
   resource_group_name = var.resource_group_name
   ttl                 = 300
-  records             = [azurerm_public_ip.public-ip.ip_address]
+  records             = [azurerm_network_interface.privateip.private_ip_address]
 }
 
 resource "azurerm_network_interface_security_group_association" "example_nsg_association" {
