@@ -20,15 +20,12 @@
     state: latest
 
 - name: Log into DockerHub using a Personal Access Token
-  hosts: all
   collections:
     - community.docker
-  tasks:
-    - name: Docker login to Docker Hub
-      community.docker.docker_login:
-        username: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-infra/data/github:docker_user token={{ token }} url=http://vault-int.azdevopsb1.online:8200') }}"
-        password: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-infra/data/github:docker_pat token={{ token }} url=http://vault-int.azdevopsb1.online:8200') }}"
-        # registry_url: docker.io # Defaults to docker.io if not specified
-        reauthorize: true # Forces re-authorization
+  community.docker.docker_login:
+    username: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-infra/data/github:docker_user token={{ token }} url=http://vault-int.azdevopsb1.online:8200') }}"
+    password: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-infra/data/github:docker_pat token={{ token }} url=http://vault-int.azdevopsb1.online:8200') }}"
+    # registry_url: docker.io # Defaults to docker.io if not specified
+    reauthorize: true # Forces re-authorization
 
 
