@@ -25,7 +25,7 @@ resource "null_resource" "ansible" {
   provisioner "remote-exec" {
     inline = [
       "sudo dnf install python3.12 python3.12-pip -y",
-      "sudo pip3.12 install ansible hvac terraform libicu",
+      "sudo pip3.12 install ansible hvac",
     ]
     connection {
       type     = "ssh"
