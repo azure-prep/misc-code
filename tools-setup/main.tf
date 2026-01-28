@@ -18,7 +18,7 @@ module "vault" {
 }
 
 module "runner" {
-  source = "./module/vm"
+  source = "./module/spot-vm"
   location = "UK West"
   name = "runner"
   resource_group_name = "rg1"
