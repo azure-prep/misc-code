@@ -24,11 +24,21 @@
     name: jq
     state: installed
 
-- name: Initialize and Unseal Vault if not already initialized
+- name: Initialize Vault if not already initialized
   ansible.builtin.shell: |
     export VAULT_ADDR="http://127.0.0.1:8200"
-    vault operator init -key-shares=1 -key-threshold=1 -format=json > vault-keys.json
-    cat vault-keys.json
-    vault operator unseal "$(jq -r '.unseal_keys_b64[0]' vault-keys.json)"
-    export VAULT_TOKEN=$(jq -r '.root_token' vault-keys.json)
-    echo $VAULT_TOKEN
+    if ! vault status -format=json | jq -e '.initialized' >/dev/null; then
+      vault operator init -key-shares=1 -key-threshold=1 -format=json > vault-keys.json
+      cat vault-keys.json
+      vault operator unseal "$(jq -r '.unseal_keys_b64[0]' vault-keys.json)"
+      echo "VAULT_ROOT_TOKEN=$(jq -r '.root_token' vault-keys.json)"
+    else
+      echo "Vault already initialized"
+    fi
+  register: vault_init_output
+  changed_when: false
+
+- name: Print Vault root token
+  ansible.builtin.debug:
+    msg: "{{ vault_init_output.stdout_lines }}"
+
