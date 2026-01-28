@@ -24,15 +24,9 @@
     name: jq
     state: installed
 
-
-- name: Set VAULT_ADDR environment
-  ansible.builtin.set_fact:
-    env_vars:
-      VAULT_ADDR: "http://127.0.0.1:8200"
-
 - name: Initialize and Unseal Vault if not already initialized
   ansible.builtin.shell: |
-    export VAULT_ADDR="{{ vault_addr }}"
+    export VAULT_ADDR="http://127.0.0.1:8200"
     vault operator init -key-shares=1 -key-threshold=1 -format=json > vault-keys.json
     cat vault-keys.json
     vault operator unseal "$(jq -r '.unseal_keys_b64[0]' vault-keys.json)"
