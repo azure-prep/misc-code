@@ -1,6 +1,6 @@
 FROM redhat/ubi9
 
-RUN dnf install -y libicu
+RUN dnf install libicu make terraform -y
 
 RUN adduser github
 

@@ -17,6 +17,25 @@ resource "azurerm_network_interface" "privateip" {
   }
 }
 
+resource "null_resource" "ansible" {
+  depends_on = [azurerm_linux_virtual_machine.spot_vm]
+  triggers = {
+    always_run = timestamp()
+  }
+  provisioner "remote-exec" {
+    inline = [
+      "sudo dnf install python3.12 python3.12-pip -y",
+      "sudo pip3.12 install ansible hvac terraform libicu",
+    ]
+    connection {
+      type     = "ssh"
+      user     = "azuser"
+      password = "Devops@12345"
+      host     =  azurerm_network_interface.privateip.private_ip_address
+    }
+  }
+}
+
 resource "azurerm_linux_virtual_machine" "spot_vm" {
   name                  = var.name
   location              = var.location
