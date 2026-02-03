@@ -3,7 +3,7 @@
     name: chandralekhas/github-runner:latest
     source: pull
 
-- name: Get runner token
+- name: Get runner  token
   ansible:
     builtin:
       shell: |
