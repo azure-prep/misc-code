@@ -10,21 +10,21 @@
   register: github_token
 
 - name: Get runner  token
-  ansible.builtin.shell: echo {{github_token.stdout}}
+  ansible.builtin.debug: echo {{github_token.stdout}}
 
-- name: Deploy runner
-  community.docker.docker_container:
-    name: "{{ item }}"
-    image: chandralekhas/github-runner:latest
-    env:
-      TOKEN: "{{ github_token.stdout }}"
-      NAME: "{{ item }}"
-      ARM_CLIENT_ID:  "{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-infra/data/azure-sp:ARM_CLIENT_ID token={{ token }} url=http://vault-int.azdevopsb1.online:8200') }}"
-      ARM_CLIENT_SECRET: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-infra/data/azure-sp:ARM_CLIENT_SECRET token={{ token }} url=http://vault-int.azdevopsb1.online:8200') }}"
-      ARM_SUBSCRIPTION_ID: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-infra/data/azure-sp:ARM_SUBSCRIPTION_ID token={{ token }} url=http://vault-int.azdevopsb1.online:8200') }}"
-      ARM_TENANT_ID: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-infra/data/azure-sp:ARM_TENANT_ID token={{ token }} url=http://vault-int.azdevopsb1.online:8200') }}"
-    state: started
-  loop:
-    - runner1
-    - runner2
-    - runner3
+#- name: Deploy runner
+#  community.docker.docker_container:
+#    name: "{{ item }}"
+#    image: chandralekhas/github-runner:latest
+#    env:
+#      TOKEN: "{{ github_token.stdout }}"
+#      NAME: "{{ item }}"
+#      ARM_CLIENT_ID:  "{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-infra/data/azure-sp:ARM_CLIENT_ID token={{ token }} url=http://vault-int.azdevopsb1.online:8200') }}"
+#      ARM_CLIENT_SECRET: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-infra/data/azure-sp:ARM_CLIENT_SECRET token={{ token }} url=http://vault-int.azdevopsb1.online:8200') }}"
+#      ARM_SUBSCRIPTION_ID: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-infra/data/azure-sp:ARM_SUBSCRIPTION_ID token={{ token }} url=http://vault-int.azdevopsb1.online:8200') }}"
+#      ARM_TENANT_ID: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-infra/data/azure-sp:ARM_TENANT_ID token={{ token }} url=http://vault-int.azdevopsb1.online:8200') }}"
+#    state: started
+#  loop:
+#    - runner1
+#    - runner2
+#    - runner3
