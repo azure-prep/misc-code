@@ -26,7 +26,7 @@
 
 - name: Initialize Vault if not already initialized
   ansible.builtin.shell: |
-    export VAULT_ADDR="http://127.0.0.1:8200"
+    export VAULT_ADDR="http://vault-int.azdevopsb1.online:8200"
     if ! vault status -format=json | jq -e '.initialized' >/dev/null; then
       vault operator init -key-shares=1 -key-threshold=1 -format=json > vault-keys.json
       cat vault-keys.json
@@ -41,4 +41,3 @@
 - name: Print Vault root token
   ansible.builtin.debug:
     msg: "{{ vault_init_output.stdout_lines }}"
-

@@ -3,12 +3,20 @@
     name: chandralekhas/github-runner:latest
     source: pull
 
+- name: Get runner token
+  ansible:
+    builtin:
+      shell: |
+        gh api --method POST -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28"   /orgs/azure-prep/actions/runners/registration-token | jq .token | xargs
+  delegate_to: localhost
+  register: github_token
+
 - name: Deploy runner
   community.docker.docker_container:
     name: "{{ item }}"
     image: chandralekhas/github-runner:latest
     env:
-      TOKEN: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-infra/data/github:token token={{ token }} url=http://vault-int.azdevopsb1.online:8200') }}"
+      TOKEN: "{{ github_token }}"
       NAME: "{{ item }}"
       ARM_CLIENT_ID:  "{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-infra/data/azure-sp:ARM_CLIENT_ID token={{ token }} url=http://vault-int.azdevopsb1.online:8200') }}"
       ARM_CLIENT_SECRET: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-infra/data/azure-sp:ARM_CLIENT_SECRET token={{ token }} url=http://vault-int.azdevopsb1.online:8200') }}"
