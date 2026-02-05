@@ -17,6 +17,7 @@
 - name: Deploy runner
   community.docker.docker_container:
     name: "{{ item }}"
+    pull: true
     image: chandralekhas/github-runner:latest
     env:
       TOKEN: "{{ github_token.stdout }}"
