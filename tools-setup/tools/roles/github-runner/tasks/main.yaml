@@ -19,7 +19,6 @@
   ansible.builtin.template:
     src: docker.service
     dest: /usr/lib/systemd/system/docker.service
-    remote_src: yes
 
 - name: Reload systemd daemon
   ansible.builtin.systemd:
