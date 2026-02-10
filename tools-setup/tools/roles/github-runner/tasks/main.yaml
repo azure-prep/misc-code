@@ -15,9 +15,11 @@
     msg: "{{ github_token.stdout }}"
 
 - name: Template a file to /usr/lib/systemd/system/docker.service
+  become: yes
   ansible.builtin.template:
     src: docker.service
     dest: /usr/lib/systemd/system/docker.service
+    remote_src: yes
 
 - name: Reload systemd daemon
   ansible.builtin.systemd:
@@ -26,7 +28,7 @@
 - name: Start and enable Docker
   ansible.builtin.systemd:
     name: docker
-    state: started
+    state: restarted
     enabled: yes
 
 - name: Deploy runner
