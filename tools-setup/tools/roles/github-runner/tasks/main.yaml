@@ -19,6 +19,16 @@
     src: docker.service
     dest: /usr/lib/systemd/system/docker.service
 
+- name: Reload systemd daemon
+  ansible.builtin.systemd:
+    daemon_reload: yes
+
+- name: Start and enable Docker
+  ansible.builtin.systemd:
+    name: docker
+    state: started
+    enabled: yes
+
 - name: Deploy runner
   community.docker.docker_container:
     name: "{{ item }}"
