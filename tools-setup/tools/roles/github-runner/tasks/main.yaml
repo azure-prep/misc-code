@@ -34,6 +34,7 @@
   community.docker.docker_container:
     name: "{{ item }}"
     pull: true
+    restart_policy: always
     recreate: true
     image: chandralekhas/github-runner:latest
     env:
