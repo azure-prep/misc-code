@@ -15,6 +15,7 @@ module "vault" {
   location = "UK West"
   name = "vault"
   resource_group_name = "rg1"
+  size                = "Standard_D2s_v3"
 }
 
 module "runner" {
@@ -22,4 +23,13 @@ module "runner" {
   location = "UK West"
   name = "runner"
   resource_group_name = "rg1"
+  size                = "Standard_D2s_v3"
+}
+
+module "elk-stack" {
+  source = "./module/spot-vm"
+  location = "UK West"
+  name = "elk-stack"
+  resource_group_name = "rg1"
+  size = "Standard_E2bds_v5"
 }
