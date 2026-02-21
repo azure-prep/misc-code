@@ -11,7 +11,8 @@ RUN               chmod +x main.sh
 RUN               curl -L -o actions-runner-linux-x64-2.331.0.tar.gz \
                    https://github.com/actions/runner/releases/download/v2.331.0/actions-runner-linux-x64-2.331.0.tar.gz \
                    && tar xzf actions-runner-linux-x64-2.331.0.tar.gz \
-                   && rm actions-runner-linux-x64-2.331.0.tar.gz
+                   && rm actions-runner-linux-x64-2.331.0.tar.gz \
+RUN               curl -L -o sonar-scanner-cli-7.1.0.4889-linux-x64.zip "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-7.1.0.4889-linux-x64.zip?_gl=1*1aqu2g8*_gcl_au*MTgxMzM0NDY3NC4xNzU0MDA5MTU1*_ga*MTM4MTA5NDI5Ni4xNzU0MDA5MTU1*_ga_9JZ0GZ5TC6*czE3NTQwMDkxNTQkbzEkZzEkdDE3NTQwMDk4NzAkajU5JGwwJGgw" && unzip sonar-scanner-cli-7.1.0.4889-linux-x64.zip && rm -f sonar-scanner-cli-7.1.0.4889-linux-x64.zip
 RUN               chown -R github:github /home/github
 USER              github
 ENTRYPOINT        ["./main.sh"]
