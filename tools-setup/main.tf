@@ -26,6 +26,14 @@ module "runner" {
   size                = "Standard_D2s_v3"
 }
 
+module "sonarqube" {
+  source = "./module/spot-vm"
+  location = "UK West"
+  name = "sonarqube"
+  resource_group_name = "rg1"
+  size                = "Standard_DS2_v2"
+}
+
 # module "elk-stack" {
 #   source = "./module/spot-vm"
 #   location = "UK West"
