@@ -31,7 +31,7 @@ module "sonarqube" {
   location = "UK West"
   name = "sonarqube"
   resource_group_name = "rg1"
-  size                = "Standard_DS2_v2"
+  size                = "Standard_D2s_v3"
 }
 
 # module "elk-stack" {
