@@ -42,10 +42,10 @@ module "runner" {
 #   size = "Standard_E2bds_v5"
 # }
 
-module "jfrog" {
-  source = "./module/spot-vm"
-  location = "UK West"
-  name = "jfrog"
-  resource_group_name = "rg1"
-  size                = "Standard_E2bds_v5"
-}
+# module "jfrog" {
+#   source = "./module/spot-vm"
+#   location = "UK West"
+#   name = "jfrog"
+#   resource_group_name = "rg1"
+#   size                = "Standard_E2bds_v5"
+# }
