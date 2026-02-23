@@ -1,0 +1,16 @@
+- name: Download Jfrog repo file
+  ansible.builtin.get_url:
+    url: https://releases.jfrog.io/artifactory/artifactory-rpms/artifactory-rpms.repo
+    dest: /etc/yum.repos.d/artifactory-rpms.repo
+
+
+- name: Install Artifactory
+  ansible.builtin.dnf:
+    name: jfrog-artifactory-oss
+    state: installed
+
+- name: Start Artifactory
+  ansible.builtin.systemd_service:
+    name: artifactory
+    state: started
+    enabled: yes

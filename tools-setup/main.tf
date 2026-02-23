@@ -26,13 +26,13 @@ module "runner" {
   size                = "Standard_D2s_v3"
 }
 
-module "sonarqube" {
-  source = "./module/spot-vm"
-  location = "UK West"
-  name = "sonarqube"
-  resource_group_name = "rg1"
-  size                = "Standard_D2s_v3"
-}
+# module "sonarqube" {
+#   source = "./module/spot-vm"
+#   location = "UK West"
+#   name = "sonarqube"
+#   resource_group_name = "rg1"
+#   size                = "Standard_D2s_v3"
+# }
 
 # module "elk-stack" {
 #   source = "./module/spot-vm"
@@ -41,3 +41,11 @@ module "sonarqube" {
 #   resource_group_name = "rg1"
 #   size = "Standard_E2bds_v5"
 # }
+
+module "jfrog" {
+  source = "./module/spot-vm"
+  location = "UK West"
+  name = "jfrog"
+  resource_group_name = "rg1"
+  size                = "Standard_E2bds_v5"
+}
